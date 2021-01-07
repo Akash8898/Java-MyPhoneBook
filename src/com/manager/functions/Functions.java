@@ -7,11 +7,14 @@ import java.io.IOException;
 
 public class Functions {
 
+	
 	public static void view(File file) throws IOException {
 		// TODO Auto-generated method stub
-		char[] target = new char[(int) (file.length())];
+		System.out.println(file.length());
+		char[] target = new char[(int) (file.length())];	//Size exceeds int limit
 		FileReader fr = new FileReader(file);
-		fr.read(target);
+		fr.read(target);									//Backtrack it
+		
 		if(file.length()==0)
 			System.out.println("There is no contact to display");
 		else
@@ -60,8 +63,13 @@ public class Functions {
 			
 			File exportFile = new File(exportFilename+".txt");
 			for(int i = 1 ; i<100; i++)
-				if(exportFile.exists()) {
-					exportFile = new File(exportFilename+i+".txt");
+				{
+					if(exportFile.exists()) {
+					
+						exportFile = new File(exportFilename+i+".txt");				//
+						
+					}
+					System.out.println(i);
 				}
 			
 			FileReader fr = new FileReader(file);
